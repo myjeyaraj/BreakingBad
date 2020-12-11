@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Breaking_Bad_title_card.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
