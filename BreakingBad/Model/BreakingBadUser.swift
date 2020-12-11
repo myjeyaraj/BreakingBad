@@ -8,13 +8,33 @@
 import Foundation
 
 struct BreakingBadUser: Codable {
-    var name: String
-    var nickName: String
-    var charector: String
-    var occupation: [String]
-    var status: String
-    var appearence: [Int]
-    var userImage: String
+    let id: String
+    let name: String
+    let birthday: String
+    let occupation: [String]
+    let imageURL: String
+    let status: String
+    let nickName: String
+    let appearence: [Int]
+    let portrayed: String
+    let category: String
+    let bettercallAappearance: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "char_id"
+        case name
+        case birthday
+        case occupation
+        case imageURL = "img"
+        case status
+        case nickName
+        case appearence
+        case portrayed
+        case category
+        case bettercallAappearance = "better_call_saul_appearance"
+        
+    }
+
 }
 
 

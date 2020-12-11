@@ -1,0 +1,52 @@
+PODS:
+  - Differentiator (4.0.1)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxCoreData (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - Kingfisher (~> 5.0)
+  - RxCocoa (~> 5)
+  - RxCoreData
+  - RxDataSources
+  - RxSwift (~> 5)
+  - SVProgressHUD
+
+SPEC REPOS:
+  trunk:
+    - Differentiator
+    - Kingfisher
+    - RxCocoa
+    - RxCoreData
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxCoreData: 1ed5f83e80facccc90fc054eb7f39a44177de56a
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: dfe43a34261f9d43d43a74eb2e68130fea885513
+
+COCOAPODS: 1.9.3
