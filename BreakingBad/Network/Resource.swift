@@ -109,6 +109,9 @@ extension URLSession {
             DispatchQueue.main.async {
                 let statusCode = (response as? HTTPURLResponse)?.statusCode
 
+                let str = String(decoding: data!, as: UTF8.self)
+
+                print(str)
                 if let error = error {
                     let error = BadError(message: error.localizedDescription, messageCode: 2)
                     completion(Result.failure(error))
@@ -119,25 +122,22 @@ extension URLSession {
                 switch statusCode {
                 case _ where statusCode! == 200 || statusCode! == 204:
                     guard let data = data else { return }
-                    var vat = ""
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                        vat = json as? String ?? ""
-                        print(json)
-                    } catch {
-                    }
+               
+                        do {
+                         
+                            let statusesArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                                print(statusesArray)
+                                // Finally we got the username
+                          
+                        } catch {
+                          print (error)
+                        }
+                   
 
                     guard let parsedResponse = resource.parse(data) else {
-                        if response?.url?.absoluteString.contains("VAT_Accessories") ?? false {
-                            let responseData: Result<A> = Result<A>.success(vat as? A)
-                            completion(responseData)
-                        } else if response?.url?.absoluteString.contains("AddProfileImageToSuplyer") ?? false {
-                            let responseData: Result<A> = Result<A>.success("0" as? A)
-                            completion(responseData)
-                        } else {
                             let error = BadError(message: "Error", messageCode: 1)
                             completion(Result.failure(error))
-                        }
+                     
                         return
                     }
 
@@ -162,3 +162,17 @@ extension URLSession {
     }
 }
 
+struct Alamofire {
+    
+}
+
+//extension Alamofire {
+//  func fetchFilms() {
+//    // 1
+//    let request = AF.request("https://swapi.dev/api/films")
+//    // 2
+//    request.responseJSON { (data) in
+//      print(data)
+//    }
+//  }
+//}

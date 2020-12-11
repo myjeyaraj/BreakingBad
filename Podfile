@@ -10,7 +10,7 @@ target 'BreakingBad' do
   pod 'RxDataSources'
   pod 'RxCoreData'
   pod 'Kingfisher', '~> 5.0'
-  pod 'SVProgressHUD'
+  pod 'MBProgressHUD', '~> 1.1.0'
 
   target 'BreakingBadTests' do
     inherit! :search_paths

@@ -20,18 +20,18 @@ protocol PrimaryDetailProtocol {
 
 }
 
-struct CharectorCellDetail: PrimaryDetailProtocol, ImageProtocol {
+struct CharacterCellDetail: PrimaryDetailProtocol, ImageProtocol {
     var primaryTitle: String
     var secondaryTitle: String
     var imageURL: String?
 }
 
-extension CharectorCellDetail {
+extension CharacterCellDetail {
     var placeHolderImage: UIImage? { return UIImage(named: "avatarImage")!}
 
 }
 
-class CharectorListTableViewCell: UITableViewCell {
+class CharacterListTableViewCell: UITableViewCell {
     @IBOutlet var itemImageView: UIImageView!
     @IBOutlet var primaryLabel: UILabel!
 
@@ -53,12 +53,10 @@ class CharectorListTableViewCell: UITableViewCell {
     }
     
     fileprivate func fillDetails() {
-        if let item = rowItem as? PrimaryDetailProtocol {
-            primaryLabel.text = item.primaryTitle
-        }
-        
+        primaryLabel.text = rowItem?.primaryTitle
+
         if let item = rowItem as? ImageProtocol {
-            
+            setImage(imageURL: item.imageURL, placeholderImage: item.placeHolderImage ?? UIImage(named: "avatarImage")!)
          }
     }
     

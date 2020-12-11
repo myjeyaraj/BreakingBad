@@ -10,7 +10,7 @@ import Foundation
 
 struct BreakingBadURL {
     static var scheme: String { return "https" }
-    static var pathExtension: String { return "api" }
+    static var pathExtension: String { return "/api" }
 }
 
 struct BreakingBadURLConstant {
@@ -21,7 +21,7 @@ struct BreakingBadConstant {
     static let cellRowHeight = 50
 }
 enum BreakingBadEndpoint {
-    case charectors
+    case characters
     case other
 
     var urlComponents: URLComponents {
@@ -42,8 +42,8 @@ enum BreakingBadEndpoint {
         var path = ""
 
         switch self {
-        case .charectors:
-            path = "/charectors"
+        case .characters:
+            path = "/characters"
         default:
             return ""
         }
@@ -51,18 +51,4 @@ enum BreakingBadEndpoint {
         return path
     }
 }
-
-enum BreakingBadQueryOptions {
-    case action(String)
-    case id(String)
-   
-
-    var queryItems: [URLQueryItem] {
-        switch self {
-        case let .action(action):
-            return [URLQueryItem(name: "action", value: action)]
-        case let .id(id):
-            return [URLQueryItem(name: "id", value: id)]
-        }
-    }
-}
+ 

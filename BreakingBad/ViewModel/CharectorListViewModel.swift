@@ -5,8 +5,8 @@
 //  Created by Myvili.jeyaraj on 10/12/2020.
 //
 
-import RxSwift
 import RxCocoa
+import RxSwift
 
 enum ViewLoadStatus {
     case loading
@@ -14,13 +14,14 @@ enum ViewLoadStatus {
     case empty
     case noResults(String)
 }
+
 protocol CharectProtocol {
     func fetchCharectors()
-        var errors: Driver<Error?> { get }
-        var loadingStatus: Driver<ViewLoadStatus> { get }
-        var items: Driver<[BreakingBadUser]> { get }
+    var errors: Driver<Error?> { get }
+    var loadingStatus: Driver<ViewLoadStatus> { get }
+    var items: Driver<[SectionViewModel]> { get }
 
-        func detailItems()
+    func detailItems()
 }
 
 class CharectorListViewModel: ViewControllerFeedbackProtocol {
@@ -28,9 +29,9 @@ class CharectorListViewModel: ViewControllerFeedbackProtocol {
     var notification: Driver<String?>
     var errors: Driver<Error?>
     var loadingStatus: Driver<ViewLoadStatus>
-    var dataSource: Driver<[BreakingBadUser]>
+    var dataSource: Driver<[SectionViewModel]>
 
-    fileprivate let _dataSource = ReplaySubject<[BreakingBadUser]>.create(bufferSize: 1)
+    fileprivate let _dataSource = ReplaySubject<[SectionViewModel]>.create(bufferSize: 1)
     fileprivate let _loadingStatus = ReplaySubject<ViewLoadStatus>.create(bufferSize: 1)
     fileprivate let _notification = ReplaySubject<String?>.create(bufferSize: 1)
     fileprivate let _errors = ReplaySubject<Error?>.create(bufferSize: 1)
@@ -45,25 +46,28 @@ class CharectorListViewModel: ViewControllerFeedbackProtocol {
 
         disposeBag = DisposeBag()
         dataSource = _dataSource.asDriver(onErrorJustReturn: [])
-
     }
 
     func loadCharectors() {
-        Request.breakingBadCharectors() { (result) in
-            switch(result) {
+        _loadingStatus.onNext(.loading)
+
+        Request.breakingBadCharectors { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
             case let .success(response):
                 guard let response = response else {
                     return
                 }
-                
-                response.map{ v in 
-                    
-                }
-            case .failure(_):
+
+                let section = SectionViewModel(header: "manage_source_sources_section_header".localized, items: response)
+
+                self._loadingStatus.onNext(.loaded)
+                self._dataSource.onNext([section])
+
+            case .failure:
                 break
             }
         }
     }
-    
-  
 }

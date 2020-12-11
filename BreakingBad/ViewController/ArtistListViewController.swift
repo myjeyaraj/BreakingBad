@@ -1,17 +1,16 @@
 //
-//  CharectorsListViewController.swift
+//  ArtistListViewController.swift
 //  BreakingBad
 //
-//  Created by Myvili.jeyaraj on 10/12/2020.
+//  Created by Myvili.jeyaraj on 11/12/2020.
 //
 
 import UIKit
 import RxSwift
-
-import SVProgressHUD
 import RxDataSources
+import MBProgressHUD
 
-class CharectorsListViewController: UIViewController {
+class ArtistListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
@@ -23,7 +22,9 @@ class CharectorsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configUI()
+        bindFeedback()
+        displayCharectors()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,11 +35,11 @@ class CharectorsListViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
-        SVProgressHUD.show()
+//        SVProgressHUD.show()
     }
 
     fileprivate func configUI() {
-        SVProgressHUD.show()
+//        SVProgressHUD.show()
 
         title = viewModel.pageTitle
 
@@ -60,49 +61,50 @@ class CharectorsListViewController: UIViewController {
         viewModel.errors.asObservable()
             .subscribe(onNext: { [weak self] error in
                 guard let `self` = self else { return }
-                SVProgressHUD.dismiss()
-
+ 
                 guard let error = error as? BadError else { return }
-                CharectorsListViewController.showAlert(selfVC: self, title: "".localized, message: error.message)
+                CharactersListViewController.showAlert(selfVC: self, title: "".localized, message: error.message)
             })
             .disposed(by: disposeBag)
 
         viewModel.loadingStatus.asObservable()
             .subscribe(onNext: { [weak self] status in
-                SVProgressHUD.dismiss()
+                guard let `self` = self else { return }
+
+                MBProgressHUD.showAdded(to: self.view, animated: true)
 
                 switch status {
                 case .loading:
-                    SVProgressHUD.show()
-                case .empty, .noResults:
-                    SVProgressHUD.dismiss()
-                case .loaded:
-                    SVProgressHUD.dismiss()
+                    MBProgressHUD.showAdded(to: self.view, animated: true)
+                case .empty, .noResults, .loaded:
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                default:
+                    MBProgressHUD.hide(for: self.view, animated: true)
                 }
             })
             .disposed(by: disposeBag)
     }
 
-    fileprivate func manageSources() {
-        dataSource = RxTableViewSectionedReloadDataSource<SectionViewModel>(configureCell: { [unowned self] (_, tv, indexPath, model) -> CharectorListTableViewCell in
-            guard let cell: CharectorListTableViewCell = tv.dequeueReusableCell(withIdentifier: "CharectorListTableViewCell", for: indexPath) as? CharectorListTableViewCell else { return CharectorListTableViewCell() }
+    fileprivate func displayCharectors() {
+        dataSource = RxTableViewSectionedReloadDataSource<SectionViewModel>(configureCell: { [unowned self] (_, tv, indexPath, model) -> CharacterListTableViewCell in
+            
+            guard let cell: CharacterListTableViewCell = tv.dequeueReusableCell(withIdentifier: "CharacterListTableViewCell", for: indexPath) as? CharacterListTableViewCell else { return CharacterListTableViewCell() }
 
-//            cell.rowItem = CharectorCellDetail(primaryTitle: <#T##String#>,
-//                                               secondaryTitle: <#T##String#>,
-//                                               imageURL: <#T##String?#>)
+            let user = model as? BreakingBadUser
+            cell.rowItem = CharacterCellDetail(primaryTitle: user?.name ?? "",
+                                               secondaryTitle: user?.nickname ?? "",
+                                               imageURL: user?.imageURL ?? "")
+            
+            
 
             return cell
 
         })
 
-//        viewModel.dataSource
-//            .asObservable()
-//            .map { sources in
-//                SVProgressHUD.dismiss()
-//                return sources
-//            }
-//            .bind(to: tableView.rx.items(dataSource: dataSource!))
-//            .disposed(by: disposeBag)
+        viewModel.dataSource
+            .asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource!))
+            .disposed(by: disposeBag)
     }
 
 
@@ -110,6 +112,6 @@ class CharectorsListViewController: UIViewController {
 }
 
 
-extension CharectorsListViewController: UITableViewDelegate {
+extension ArtistListViewController: UITableViewDelegate {
     
 }

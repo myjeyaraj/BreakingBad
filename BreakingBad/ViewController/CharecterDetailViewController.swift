@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CharectorDetailViewController: UIViewController {
+class CharacterDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

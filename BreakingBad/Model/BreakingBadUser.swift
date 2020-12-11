@@ -8,17 +8,17 @@
 import Foundation
 
 struct BreakingBadUser: Codable {
-    let id: String
+    let id: Int
     let name: String
     let birthday: String
     let occupation: [String]
     let imageURL: String
     let status: String
-    let nickName: String
-    let appearence: [Int]
+    let nickname: String
+    let appearance: [Int]?
     let portrayed: String
     let category: String
-    let bettercallAappearance: [String]
+    let bettercallAappearance: [Int]?
     
     enum CodingKeys: String, CodingKey {
         case id = "char_id"
@@ -27,17 +27,11 @@ struct BreakingBadUser: Codable {
         case occupation
         case imageURL = "img"
         case status
-        case nickName
-        case appearence
+        case nickname
+        case appearance
         case portrayed
         case category
         case bettercallAappearance = "better_call_saul_appearance"
         
     }
-
-}
-
-
-struct Occupation: Codable {
-    
 }
