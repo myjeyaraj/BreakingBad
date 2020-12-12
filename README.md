@@ -12,9 +12,10 @@ This app enables the user to find out information about individual characters fr
 
 ### Individual Character Details
 
-####Jesse Pinkman
+#### Jesse Pinkman
 <a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/JessePinkman.png" align="center" height="1000" width="500" ></a>
-####Walter White
+
+#### Walter White
 <a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/WalterWhite.png" align="center" height="1000" width="500" ></a>
 
 
