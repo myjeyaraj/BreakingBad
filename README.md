@@ -6,3 +6,7 @@ This app enables the user to find out information about individual characters fr
 ### Home Page
 
 ![front screen](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/front%20screen.png)
+
+### Character Menu
+
+![Character Menu](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/chacter%20menu.png)
