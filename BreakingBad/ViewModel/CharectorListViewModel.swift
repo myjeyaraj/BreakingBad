@@ -37,7 +37,8 @@ class CharectorListViewModel: ViewControllerFeedbackProtocol {
     fileprivate let _errors = ReplaySubject<Error?>.create(bufferSize: 1)
 
     fileprivate var disposeBag = DisposeBag()
-
+    fileprivate var _users: [BreakingBadUser]
+    
     init() {
         pageTitle = "Breaking Bad"
         loadingStatus = _loadingStatus.asDriver(onErrorJustReturn: .empty)
@@ -46,6 +47,7 @@ class CharectorListViewModel: ViewControllerFeedbackProtocol {
 
         disposeBag = DisposeBag()
         dataSource = _dataSource.asDriver(onErrorJustReturn: [])
+        _users = []
     }
 
     func loadCharectors() {
@@ -61,7 +63,7 @@ class CharectorListViewModel: ViewControllerFeedbackProtocol {
                 }
 
                 let section = SectionViewModel(header: "Characters from BreakingBad", items: response)
-
+                self._users = response
                 self._loadingStatus.onNext(.loaded)
                 self._dataSource.onNext([section])
 
@@ -69,6 +71,22 @@ class CharectorListViewModel: ViewControllerFeedbackProtocol {
                 break
             }
         }
+    }
+    
+    func search(by name: String?) {
+        _dataSource
+        .subscribe(onNext: { section in
+            var section = section.first!
+            guard let name = name, name != "" else {
+                section.items = self._users
+                self._dataSource.onNext([section])
+                return
+            }
+            let d = self._users.map{$0 as BreakingBadUser}.filter{$0.name.contains(name) == true}
+            section.items = d as [SectionViewModel.Item]
+            self._dataSource.onNext([section])
+        })
+        .dispose()
     }
 
 }
