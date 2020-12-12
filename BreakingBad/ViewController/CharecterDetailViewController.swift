@@ -32,7 +32,7 @@ class CharacterDetailViewController: UIViewController {
         occupationLabel.text =  item.occupation.map{String($0)}.joined(separator: "\n ")
         statusLabel.text = item.name
         nickNameLabel.text = item.name
-        seasonLabel.text = "[ " + (item.appearance?.map{String($0)}.joined(separator: ", ")  ?? "") + " ]"
+        seasonLabel.text = "[ " + (item.appearance?.map{String($0)}.joined(separator: ", ")  ?? "None") + " ]"
     }
 
     fileprivate func setImage(imageURL: String?, placeholderImage: UIImage) {

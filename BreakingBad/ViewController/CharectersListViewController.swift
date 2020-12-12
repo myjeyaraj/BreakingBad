@@ -26,30 +26,20 @@ class CharactersListViewController: UIViewController {
         bindFeedback()
         displayCharectors()
         bindTableViewEvent()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         viewModel.loadCharectors()
-     
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-
     }
 
     fileprivate func configUI() {
         title = viewModel.pageTitle
 
-        tableView.delegate = self
         tableView.register(UINib(nibName: "CharacterListTableViewCell", bundle: nil), forCellReuseIdentifier: "CharacterListTableViewCell")
         tableView.register(UINib(nibName: "ListTableViewHeaderCell", bundle: nil), forHeaderFooterViewReuseIdentifier: "ListTableViewHeaderCell")
 
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: -1))
 
+        tableView.rowHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = CGFloat(BreakingBadConstant.cellRowHeight)
         tableView.separatorColor = .clear
@@ -104,8 +94,6 @@ class CharactersListViewController: UIViewController {
                                                secondaryTitle: user?.nickname ?? "",
                                                imageURL: user?.imageURL ?? "")
             
-            
-
             return cell
 
         })
@@ -115,12 +103,4 @@ class CharactersListViewController: UIViewController {
             .bind(to: tableView.rx.items(dataSource: dataSource!))
             .disposed(by: disposeBag)
     }
-
-
-
-}
-
-
-extension CharactersListViewController: UITableViewDelegate {
-    
 }

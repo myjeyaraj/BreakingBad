@@ -43,13 +43,8 @@ class CharacterListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        selectionStyle = .none
     }
     
     fileprivate func fillDetails() {
@@ -62,17 +57,15 @@ class CharacterListTableViewCell: UITableViewCell {
     
     fileprivate func setImage(imageURL: String?, placeholderImage: UIImage) {
         if let artworkURLString = imageURL, let artworkURL = URL(string: artworkURLString) {
-            itemImageView.contentMode = .scaleAspectFit
+            itemImageView.contentMode = .scaleAspectFill
             itemImageView.kf.setImage(with: artworkURL,
                                   placeholder: placeholderImage,
                                   options: [.transition(.fade(0.7))],
                                   progressBlock: nil,
                                   completionHandler: { result in
-
                                       switch result {
                                       case .success:
                                           break
-
                                       case .failure:
                                           self.itemImageView.image = placeholderImage
                                       }
