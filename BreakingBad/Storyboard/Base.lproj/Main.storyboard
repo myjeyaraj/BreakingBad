@@ -26,7 +26,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="tintColor" name="backgroundColor1"/>
-                                <state key="normal" title="'BreakingBad' Characters">
+                                <state key="normal" title="'Breaking Bad' Characters">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -35,7 +35,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to BreakingBad series charecters details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acj-aD-z6T">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Breaking Bad series characters details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acj-aD-z6T">
                                 <rect key="frame" x="20" y="100" width="374" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -212,7 +212,7 @@
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QP-m5-n9b">
                                                         <rect key="frame" x="0.0" y="62" width="414" height="1"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="primaryTextColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="cEo-f7-uVQ"/>
                                                         </constraints>
@@ -231,7 +231,7 @@
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0EN-EY-8gi">
                                                         <rect key="frame" x="0.0" y="129" width="414" height="1"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="primaryTextColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="SXx-sn-AnP"/>
                                                         </constraints>
@@ -250,7 +250,7 @@
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQT-4q-xyW">
                                                         <rect key="frame" x="0.0" y="168.5" width="414" height="1"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="primaryTextColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="TtK-wN-8vd"/>
                                                         </constraints>
@@ -269,7 +269,7 @@
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARQ-tq-TrT">
                                                         <rect key="frame" x="0.0" y="235.5" width="414" height="1"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="primaryTextColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="UoZ-r5-Rxr"/>
                                                         </constraints>
@@ -360,9 +360,6 @@
         <namedColor name="secondaryTextColor">
             <color white="1" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

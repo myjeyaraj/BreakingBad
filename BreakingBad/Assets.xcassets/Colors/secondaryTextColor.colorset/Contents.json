@@ -15,8 +15,8 @@
         }
       ],
       "color" : {
-        "platform" : "tvos",
-        "reference" : "labelColor"
+        "platform" : "ios",
+        "reference" : "lightTextColor"
       },
       "idiom" : "universal"
     }

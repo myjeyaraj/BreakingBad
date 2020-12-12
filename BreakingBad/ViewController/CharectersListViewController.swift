@@ -26,10 +26,10 @@ class CharactersListViewController: UIViewController {
         configUI()
         bindFeedback()
         displayCharectors()
-        bindTableViewEvent()
         configSearchBar()
         performSearch()
-        
+        bindTableViewEvent()
+
         viewModel.loadCharectors()
     }
 
@@ -93,7 +93,6 @@ class CharactersListViewController: UIViewController {
             .disposed(by: disposeBag)
 
     }
-
     
     fileprivate func bindFeedback() {
         viewModel.errors.asObservable()
