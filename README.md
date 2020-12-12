@@ -10,3 +10,7 @@ This app enables the user to find out information about individual characters fr
 ### Character Menu
 
 ![Character Menu](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/chacter%20menu.png)
+
+### Individual Character Details
+
+![Jesse Pinkman](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/JessePinkman.png) | ![Walter White](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/WalterWhite.png)
