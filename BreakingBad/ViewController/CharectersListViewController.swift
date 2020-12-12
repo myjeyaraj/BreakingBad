@@ -7,13 +7,13 @@
 
 import UIKit
 import RxSwift
-import MBProgressHUD
 import RxDataSources
 
 class CharactersListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
-    
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+
     fileprivate var dataSource: RxTableViewSectionedReloadDataSource<SectionViewModel>?
 
     private let viewModel = CharectorListViewModel()
@@ -25,26 +25,22 @@ class CharactersListViewController: UIViewController {
         configUI()
         bindFeedback()
         displayCharectors()
+        bindTableViewEvent()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         viewModel.loadCharectors()
-
+     
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
-        MBProgressHUD.hide(for: self.view, animated: true)
-
     }
 
     fileprivate func configUI() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-
-
         title = viewModel.pageTitle
 
         tableView.delegate = self
@@ -65,32 +61,42 @@ class CharactersListViewController: UIViewController {
         viewModel.errors.asObservable()
             .subscribe(onNext: { [weak self] error in
                 guard let `self` = self else { return }
-                MBProgressHUD.hide(for: self.view, animated: true)
-
+                
+                self.activityIndicator.isHidden = true
                 guard let error = error as? BadError else { return }
                 CharactersListViewController.showAlert(selfVC: self, title: "".localized, message: error.message)
             })
             .disposed(by: disposeBag)
 
-        let view = self.view
         viewModel.loadingStatus.asObservable()
             .subscribe(onNext: { [weak self] status in
                 guard let `self` = self else { return }
 
-                MBProgressHUD.showAdded(to: self.view, animated: true)
+                self.activityIndicator.isHidden = false
 
                 switch status {
                 case .loading:
-                    MBProgressHUD.showAdded(to: self.view, animated: true)
+                    self.activityIndicator.isHidden = false
                 case .empty, .noResults, .loaded:
-                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.activityIndicator.isHidden = true
                 }
             })
             .disposed(by: disposeBag)
     }
 
+    fileprivate func bindTableViewEvent() {
+        tableView.rx.modelSelected(BreakingBadUser.self)
+        .subscribe(onNext: { model in
+            let vc = ViewControllerIndex.charectorDetailView
+            vc.userData = model
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        })
+        .disposed(by: disposeBag)
+
+    }
     fileprivate func displayCharectors() {
-        dataSource = RxTableViewSectionedReloadDataSource<SectionViewModel>(configureCell: { [unowned self] (_, tv, indexPath, model) -> CharacterListTableViewCell in
+        dataSource = RxTableViewSectionedReloadDataSource<SectionViewModel>(configureCell: { (_, tv, indexPath, model) -> CharacterListTableViewCell in
             guard let cell: CharacterListTableViewCell = tv.dequeueReusableCell(withIdentifier: "CharacterListTableViewCell", for: indexPath) as? CharacterListTableViewCell else { return CharacterListTableViewCell() }
 
             let user = model as? BreakingBadUser

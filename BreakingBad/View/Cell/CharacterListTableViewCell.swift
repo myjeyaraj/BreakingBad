@@ -37,7 +37,7 @@ class CharacterListTableViewCell: UITableViewCell {
 
     var rowItem: PrimaryDetailProtocol? {
         didSet{
-            
+            fillDetails()
         }
     }
     
@@ -83,5 +83,10 @@ class CharacterListTableViewCell: UITableViewCell {
             itemImageView.image = placeholderImage
         }
     }
-
+    
+    
+    override func prepareForReuse() {
+        itemImageView.image = nil
+        primaryLabel.text = ""
+    }
 }

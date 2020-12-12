@@ -6,11 +6,21 @@
 //
 
 import XCTest
+import RxDataSources
+import RxSwift
+import RxCocoa
+
 @testable import BreakingBad
 
 class BreakingBadTests: XCTestCase {
-
+    let viewModel = CharectorListViewModel()
+    let viewController = CharectorListViewModel()
+let disposeBag = DisposeBag()
+    
+    
     override func setUpWithError() throws {
+        viewModel.loadCharectors()
+
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -18,16 +28,23 @@ class BreakingBadTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    func testForDataSource() {
+        let results = viewModel.dataSource
+        results.asObservable()
+            .filter{$0.count < 0}
+            .subscribe(onNext: { v in
+                XCTAssertNil(v)
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+            })
+            .disposed(by: disposeBag)
     }
+  
+    
+    func testUrlImageFail(){
+       let dd = CharacterCellDetail(primaryTitle: "", secondaryTitle: "")
+         let ss = dd as ImageProtocol
+            XCTAssertNil(ss)
 
+    }
+    
 }

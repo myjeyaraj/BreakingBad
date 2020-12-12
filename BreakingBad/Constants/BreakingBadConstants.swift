@@ -5,7 +5,7 @@
 //  Created by Myvili.jeyaraj on 10/12/2020.
 //
 
-import Foundation
+import UIKit
 
 
 struct BreakingBadURL {
@@ -52,3 +52,12 @@ enum BreakingBadEndpoint {
     }
 }
  
+
+struct Constants {
+struct View {
+    static let cornerRadius: CGFloat = 4.0
+    static let shadowRadius: CGFloat = 2.0
+    static let shadowOffset: CGSize = CGSize(width: 0, height: 2)
+    static let shadowOpacity: Float = 0.1
+}
+}

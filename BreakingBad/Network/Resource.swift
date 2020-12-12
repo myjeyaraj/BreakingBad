@@ -34,7 +34,6 @@ struct Resource<A> {
     let parseError: (Data) -> Error?
 }
 
-
 extension Resource {
     func map<B>(_ transform: @escaping (A) -> B) -> Resource<B> {
         return Resource<B>(urlRequest: urlRequest, parse: { data -> B? in
@@ -49,7 +48,6 @@ extension Resource {
         })
     }
 }
-
 
 extension Resource where A: Decodable {
     init<Body: Encodable>(url: URL, method: HttpMethod<Body>, param: [String: String]? = nil, headers: [String: String]? = [:]) {
@@ -109,9 +107,6 @@ extension URLSession {
             DispatchQueue.main.async {
                 let statusCode = (response as? HTTPURLResponse)?.statusCode
 
-                let str = String(decoding: data!, as: UTF8.self)
-
-                print(str)
                 if let error = error {
                     let error = BadError(message: error.localizedDescription, messageCode: 2)
                     completion(Result.failure(error))
@@ -122,22 +117,11 @@ extension URLSession {
                 switch statusCode {
                 case _ where statusCode! == 200 || statusCode! == 204:
                     guard let data = data else { return }
-               
-                        do {
-                         
-                            let statusesArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                                print(statusesArray)
-                                // Finally we got the username
-                          
-                        } catch {
-                          print (error)
-                        }
-                   
 
                     guard let parsedResponse = resource.parse(data) else {
-                            let error = BadError(message: "Error", messageCode: 1)
-                            completion(Result.failure(error))
-                     
+                        let error = BadError(message: "Error", messageCode: 1)
+                        completion(Result.failure(error))
+
                         return
                     }
 
@@ -149,7 +133,7 @@ extension URLSession {
                     completion(Result.failure(error))
                 default:
                     guard let data = data, let parsedResponse = resource.parseError(data) else {
-                        let error = BadError(message: "Error", messageCode:  2)
+                        let error = BadError(message: "Error", messageCode: 2)
                         completion(Result.failure(error))
                         return
                     }
@@ -161,18 +145,3 @@ extension URLSession {
         }.resume()
     }
 }
-
-struct Alamofire {
-    
-}
-
-//extension Alamofire {
-//  func fetchFilms() {
-//    // 1
-//    let request = AF.request("https://swapi.dev/api/films")
-//    // 2
-//    request.responseJSON { (data) in
-//      print(data)
-//    }
-//  }
-//}

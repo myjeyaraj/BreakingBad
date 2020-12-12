@@ -17,6 +17,7 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - Kingfisher (~> 5.0)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - RxCoreData
   - RxDataSources
   - RxSwift (~> 5)
+  - SVProgressHUD (~> 2.1.2)
 
 SPEC REPOS:
   trunk:
@@ -36,6 +38,7 @@ SPEC REPOS:
     - RxDataSources
     - RxRelay
     - RxSwift
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
@@ -46,7 +49,8 @@ SPEC CHECKSUMS:
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: de7251856dd0450519fefa062f39169a12e34b80
+PODFILE CHECKSUM: a9406c6dc07f5015383cb8e113f74cbede6f9018
 
 COCOAPODS: 1.9.3

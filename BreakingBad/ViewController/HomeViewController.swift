@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class HomeViewController: UIViewController {
-    @IBOutlet var homeButton: UIButton!
+    @IBOutlet var homeButton: Button!
 
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {

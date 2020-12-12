@@ -18,6 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="442" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKN-X3-jr2" customClass="ShadowView" customModule="BreakingBad" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="442" height="60"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAX-my-HWB" userLabel="Padding View">
                         <rect key="frame" x="0.0" y="0.0" width="442" height="60"/>
                         <subviews>
@@ -33,7 +37,7 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Karma Police" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y50-BK-p2p">
                                         <rect key="frame" x="60" y="0.0" width="374" height="50"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <color key="textColor" name="primaryTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -54,27 +58,38 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                <color key="backgroundColor" name="backgroundColor2"/>
                 <constraints>
                     <constraint firstItem="JAX-my-HWB" firstAttribute="top" secondItem="sQc-P4-1sv" secondAttribute="top" id="1bd-MM-vqd"/>
+                    <constraint firstAttribute="bottom" secondItem="vKN-X3-jr2" secondAttribute="bottom" id="7C8-t3-TCv"/>
+                    <constraint firstItem="vKN-X3-jr2" firstAttribute="top" secondItem="sQc-P4-1sv" secondAttribute="top" id="NAO-YE-3Cx"/>
                     <constraint firstAttribute="bottom" secondItem="JAX-my-HWB" secondAttribute="bottom" id="Yo3-EY-Kck"/>
                     <constraint firstAttribute="trailing" secondItem="JAX-my-HWB" secondAttribute="trailing" id="cy5-eg-Ese"/>
+                    <constraint firstAttribute="trailing" secondItem="vKN-X3-jr2" secondAttribute="trailing" id="fDB-hd-lqR"/>
+                    <constraint firstItem="vKN-X3-jr2" firstAttribute="leading" secondItem="sQc-P4-1sv" secondAttribute="leading" id="lAD-m0-ymA"/>
                     <constraint firstItem="JAX-my-HWB" firstAttribute="leading" secondItem="sQc-P4-1sv" secondAttribute="leading" id="x8Q-zN-jsf"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="primaryColor"/>
+            <connections>
+                <outlet property="itemImageView" destination="7Dc-zO-mp8" id="hme-Ps-DHd"/>
+                <outlet property="primaryLabel" destination="y50-BK-p2p" id="1eX-lJ-YfK"/>
+            </connections>
             <point key="canvasLocation" x="-249" y="-17"/>
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="backgroundColor2">
+            <color red="0.0" green="0.31137058138847351" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="primaryColor">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryTextColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

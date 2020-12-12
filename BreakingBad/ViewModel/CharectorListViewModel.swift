@@ -39,7 +39,7 @@ class CharectorListViewModel: ViewControllerFeedbackProtocol {
     fileprivate var disposeBag = DisposeBag()
 
     init() {
-        pageTitle = "Test".localized
+        pageTitle = "Breaking Bad"
         loadingStatus = _loadingStatus.asDriver(onErrorJustReturn: .empty)
         notification = _notification.asDriver(onErrorJustReturn: nil)
         errors = _errors.asDriver(onErrorJustReturn: nil)
@@ -60,7 +60,7 @@ class CharectorListViewModel: ViewControllerFeedbackProtocol {
                     return
                 }
 
-                let section = SectionViewModel(header: "manage_source_sources_section_header".localized, items: response)
+                let section = SectionViewModel(header: "Characters from BreakingBad", items: response)
 
                 self._loadingStatus.onNext(.loaded)
                 self._dataSource.onNext([section])
@@ -70,4 +70,5 @@ class CharectorListViewModel: ViewControllerFeedbackProtocol {
             }
         }
     }
+
 }

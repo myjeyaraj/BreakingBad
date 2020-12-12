@@ -13,7 +13,7 @@ struct ViewControllerIndex {
         return listView!
     }
     
-    static var charectorDetailView: UIViewController {
+    static var charectorDetailView: CharacterDetailViewController {
         let detailView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterDetailViewController") as? CharacterDetailViewController
         return detailView!
     }
