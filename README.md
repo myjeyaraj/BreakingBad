@@ -1,1 +1,2 @@
-# BreakingBad git init git add README.md git commit -m first commit git branch -M main git remote add origin https://github.com/myjeyaraj/BreakingBad.git git push -u origin main
+
+![alt text](https://github.com/myjeyaraj/BreakingBad/blob/[branch]/front screen.png?raw=true)
