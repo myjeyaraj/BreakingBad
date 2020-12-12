@@ -5,6 +5,7 @@ This app enables the user to find out information about individual characters fr
 
 ### Home Page
 
+<a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/front%20screen.png" align="left" height="48" width="48" ></a>
 ![front screen](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/front%20screen.png)
 
 ### Character Menu
@@ -13,4 +14,5 @@ This app enables the user to find out information about individual characters fr
 
 ### Individual Character Details
 
+Jesse Pinkman | Walter White
 ![Jesse Pinkman](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/JessePinkman.png) | ![Walter White](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/WalterWhite.png)
