@@ -5,4 +5,4 @@ This app enables the user to find out information about individual characters fr
 
 ### Home Page
 
-![front screen](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/front%20screen.png | width = 100)
+![front screen](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/front%20screen.png =250x250)
