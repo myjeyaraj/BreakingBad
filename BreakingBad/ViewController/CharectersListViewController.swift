@@ -51,7 +51,6 @@ class CharactersListViewController: UIViewController {
     }
 
     fileprivate func configSearchBar() {
-        searchBar.becomeFirstResponder()
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.textColor = .white
         } else {
