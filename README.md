@@ -5,18 +5,17 @@ This app enables the user to find out information about individual characters fr
 
 ### Home Page
 
-<p><a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/front%20screen.png" align="left" height="1000" width="500" ></a></p> 
+<a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/front%20screen.png" align="center" height="1000" width="500" ></a>
 
 ### Character Menu
-
-<a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/chacter%20menu.png" align="left" height="1000" width="500" ></a>
+<a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/chacter%20menu.png" align="center" height="1000" width="500" ></a>
 
 ### Individual Character Details
 
 Jesse Pinkman
-<a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/JessePinkman.png" align="left" height="1000" width="500" ></a>
+<a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/JessePinkman.png" align="center" height="1000" width="500" ></a>
 
 Walter White
-<a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/WalterWhite.png" align="left" height="1000" width="500" ></a>
+<a href="url"><img src="https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/WalterWhite.png" align="center" height="1000" width="500" ></a>
 
 
