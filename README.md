@@ -1,2 +1,8 @@
+# "Breaking Bad" character app
+## developed by Myvili Jeyaraj using Swift version 5
 
-![front screen](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/front%20screen.png)
+This app enables the user to find out information about individual characters from the Breaking Bad TV series. The user can either select the character name from a menu or search for the character by typing the first few letters.
+
+### Home Page
+
+![front screen](https://github.com/myjeyaraj/BreakingBad/blob/BB-001/screenshots/front%20screen.png | width = 100)
