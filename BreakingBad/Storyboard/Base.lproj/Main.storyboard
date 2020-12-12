@@ -91,16 +91,25 @@
                                         <color key="textColor" name="secondaryTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search  name" translatesAutoresizingMaskIntoConstraints="NO" id="m3m-sD-Nly">
+                                        <rect key="frame" x="0.0" y="58" width="404" height="56"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vzp-K8-l3e">
-                                        <rect key="frame" x="0.0" y="66" width="404" height="716"/>
+                                        <rect key="frame" x="0.0" y="118" width="404" height="664"/>
                                         <color key="backgroundColor" name="backgroundColor1"/>
                                     </tableView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="m3m-sD-Nly" secondAttribute="trailing" id="N85-0h-fuy"/>
                                     <constraint firstAttribute="trailing" secondItem="Vzp-K8-l3e" secondAttribute="trailing" id="UbK-oh-71g"/>
-                                    <constraint firstItem="Vzp-K8-l3e" firstAttribute="top" secondItem="rcF-lo-FDg" secondAttribute="bottom" constant="10" id="Uxd-aw-jPR"/>
+                                    <constraint firstItem="Vzp-K8-l3e" firstAttribute="top" secondItem="m3m-sD-Nly" secondAttribute="bottom" constant="4" id="WIs-YB-LoT"/>
+                                    <constraint firstItem="m3m-sD-Nly" firstAttribute="top" secondItem="rcF-lo-FDg" secondAttribute="bottom" constant="2" id="aNd-DC-mHE"/>
                                     <constraint firstItem="Vzp-K8-l3e" firstAttribute="leading" secondItem="JkD-Lc-Vl0" secondAttribute="leading" id="eAE-gB-JwM"/>
                                     <constraint firstItem="rcF-lo-FDg" firstAttribute="top" secondItem="JkD-Lc-Vl0" secondAttribute="top" constant="16" id="mvv-vw-u0N"/>
+                                    <constraint firstItem="m3m-sD-Nly" firstAttribute="leading" secondItem="JkD-Lc-Vl0" secondAttribute="leading" id="sV4-TZ-285"/>
                                     <constraint firstItem="rcF-lo-FDg" firstAttribute="leading" secondItem="JkD-Lc-Vl0" secondAttribute="leading" constant="16" id="wI1-Al-X2c"/>
                                     <constraint firstAttribute="trailing" secondItem="rcF-lo-FDg" secondAttribute="trailing" constant="16" id="whP-lQ-5xy"/>
                                     <constraint firstAttribute="bottom" secondItem="Vzp-K8-l3e" secondAttribute="bottom" constant="20" id="z6G-0T-rP1"/>
@@ -124,6 +133,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="3NL-Sn-5Un" id="3Pp-7F-luK"/>
+                        <outlet property="searchBar" destination="m3m-sD-Nly" id="DMA-td-irk"/>
                         <outlet property="tableView" destination="Vzp-K8-l3e" id="0C5-wt-qsd"/>
                     </connections>
                 </viewController>

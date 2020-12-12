@@ -13,7 +13,8 @@ class CharactersListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-
+    @IBOutlet var searchBar: UISearchBar!
+    
     fileprivate var dataSource: RxTableViewSectionedReloadDataSource<SectionViewModel>?
 
     private let viewModel = CharectorListViewModel()
@@ -26,6 +27,8 @@ class CharactersListViewController: UIViewController {
         bindFeedback()
         displayCharectors()
         bindTableViewEvent()
+        configSearchBar()
+        performSearch()
         
         viewModel.loadCharectors()
     }
@@ -47,6 +50,51 @@ class CharactersListViewController: UIViewController {
         tableView.cellLayoutMarginsFollowReadableWidth = false
     }
 
+    fileprivate func configSearchBar() {
+        searchBar.becomeFirstResponder()
+        if #available(iOS 13.0, *) {
+            searchBar.searchTextField.textColor = .white
+        } else {
+            let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+            textFieldInsideSearchBar?.textColor = .white
+        }
+
+        searchBar
+            .rx
+            .textDidEndEditing
+            .asDriver()
+            .drive(onNext: { [unowned self] in
+                self.view.endEditing(true)
+            })
+            .disposed(by: disposeBag)
+
+        searchBar
+            .rx
+            .searchButtonClicked
+            .subscribe(onNext: { [unowned self] _ in
+                self.view.endEditing(true)
+
+                self.viewModel.search(by: self.searchBar.text ?? "")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func performSearch() {
+        let searchBarText = searchBar
+            .rx
+            .text
+            .distinctUntilChanged()
+ 
+        searchBarText
+            .subscribe(onNext: { [weak self] text in
+                guard let `self` = self else { return }
+                self.viewModel.search(by: text ?? "")
+            })
+            .disposed(by: disposeBag)
+
+    }
+
+    
     fileprivate func bindFeedback() {
         viewModel.errors.asObservable()
             .subscribe(onNext: { [weak self] error in
